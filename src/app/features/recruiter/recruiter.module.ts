@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AgGridModule } from 'ag-grid-angular';
+import { RecruiterComponent } from './recruiter.component';
 
 @NgModule({
   declarations: [
@@ -10,4 +11,4 @@ import { AgGridModule } from 'ag-grid-angular';
     AgGridModule.withComponents([])
   ]
 })
-export class RecuiterModule { }
+export class RecruiterModule { }

@@ -4,70 +4,71 @@
 </head>
 <body>
     <header>
-      <button type="button" class="btn">Profile</button>
+      <button class="btn">Log out&nbsp;<span class="fa fa-user-circle fa-lg"></span></button>
     </header>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12 col-md-4">
-          <section>  
-            <nav>
-              <form>
-                <label for="from">From:</label>
-                <input type="date" id="from" name="from">
-                <label for="to">To:  </label>
+    <section>
+        <form class="filters">
+            <div>
+            <label for="from"><strong>From:&nbsp;</strong> </label>
+            <input type="date" id="from" name="from">
+            </div>
+            <div>
+                <label for="to"><strong>To:</strong>&nbsp;</label>
                 <input type="date" id="to" name="to">
-                <br>
-                <input type="submit">
-              </form>
-              <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for skills.." title="Type in a name">
-
-          <ul id="myUL">
-          <li><a href="#">Angular</a></li>
-          <li><a href="#">Python</a></li>
-          <li><a href="#">Java</a></li>
-          <li><a href="#">Scala</a></li>
-          <li><a href="#">C++</a></li>
-          <li><a href="#">React</a></li>
-          </ul>
-
-          <script>
-          function myFunction() {
-            var input, filter, ul, li, a, i, txtValue;
-            input = document.getElementById("myInput");
-            filter = input.value.toUpperCase();
-            ul = document.getElementById("myUL");
-            li = ul.getElementsByTagName("li");
-            for (i = 0; i < li.length; i++) {
-                a = li[i].getElementsByTagName("a")[0];
-                txtValue = a.textContent || a.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    li[i].style.display = "";
-                } else {
-                    li[i].style.display = "none";
-                }
-            }
-          }
-              </script>
-            </nav>
-          </section>
+            </div>
+            <div>
+                <label for="skills"><strong>Skills:</strong>&nbsp;</label>
+                <datalist id="suggestion">
+                    <option>Angular</option>
+                    <option>Agile</option>
+                    <option>Java</option>
+                    <option>React</option>
+                    <option>Javascript</option>
+                    <option>C</option>
+                    <option>SQL</option>
+                    <option>C++</option>
+                </datalist>
+                <input autoComplete="on" list="suggestion"/> 
+            </div>
+            <div>
+                <label for="name"><strong>Panel Name:</strong>&nbsp;</label>
+                <datalist id="suggestions">
+                    <option>Chandler Bing</option>
+                    <option>Joey Tribbiani</option>
+                    <option>Monica Geller</option>
+                    <option>Phoebe Buffay</option>
+                    <option>Rachel Green</option>
+                    <option>Ross Geller</option>
+                </datalist>
+                <input  autoComplete="on" list="suggestions"/> 
+            </div>
+            <input type="submit" placeholder="Submit">
+        </form>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-2"></div>
+                <div class="col-sm-12 col-md-8">
+                    <ag-grid-angular
+                            style="width:100%;"
+                            class="ag-theme-alpine"
+                            [rowData]="rowData"
+                            [columnDefs]="columnDefs"
+                            [columnTypes]="columnTypes"
+                            [suppressExcelExport]="true"
+                            [popupParent]="popupParent"
+                            (gridReady)="onGridReady($event)"
+                            domLayout='autoHeight'
+                        >
+                    </ag-grid-angular>
+                </div>
+            </div>
         </div>
-        <div class="col-sm-12 col-md-8">
-        <ag-grid-angular
-            style="width:100%; height:500px;"
-            class="ag-theme-alpine"
-            [rowData]="rowData"
-            [columnDefs]="columnDefs"
-            [columnTypes]="columnTypes"
-        >
-        </ag-grid-angular>
-        </div>>
-      </div>
-    </div>
- 
-<footer>
-    <button type="button" class="btn">Download CSV</button>
-  </footer>
-  
-  </body>
-  </html>
+    </section>
+    <br>
+    <footer>
+        <button (click)="onBtnExport()" class="btn"><i class="fa fa-download fa-lg" aria-hidden="true"></i></button>
+    </footer>
+</body>
+</html>
   

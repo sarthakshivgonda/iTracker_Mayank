@@ -1,13 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { ColDef } from 'ag-grid-community';
+import { ColDef,  GridApi, GridReadyEvent} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { RecruiterService } from './recruiter.service';
 
 @Component({
   selector: 'app-recruiter',
   templateUrl: './recruiter.component.html',
   styleUrls: ['./recruiter.component.scss']
 })
-export class RecruiterComponent {
 
+export class RecruiterComponent implements OnInit{
+  
+  private gridApi!: GridApi;
   columnDefs: ColDef[] = [
     { field: 'name', filter: true},
     { field: 'skill', filter: true},
@@ -15,12 +20,32 @@ export class RecruiterComponent {
     { field: 'slot time', sortable: true, filter: true}
   ];
 
-  rowData = [
-    { name: 'Celica', skill: 'java', date: '4 january', 'slot time': '11:00 AM to 12 PM'},
-    { name: 'Celica1', skill: 'angular', date: '5 january', 'slot time': '11:00 AM to 12 PM' },
-    { name: 'Celica2', skill: 'react', date: '6 january', 'slot time': '11:00 AM to 12 PM' }
-  ];
+  rowData: any[] =[];
 
+  /*rowData = [
+    { name: 'Celica', skill: 'java', date: '04/01/2022', 'slot time': '11:00 AM to 12 PM'},
+    { name: 'naruto', skill: 'angular', date: '05/01/2022', 'slot time': '11:00 AM to 12 PM' },
+    { name: 'goku', skill: 'react', date: '06/01/2022', 'slot time': '11:00 AM to 12 PM' },
+    { name: 'luffy', skill: 'c++', date: '07/01/2022', 'slot time': '11:00 AM to 12 PM' },
+    { name: 'sasuke', skill: '.Net', date: '08/01/2022', 'slot time': '11:00 AM to 12 PM' },
+    { name: 'vegeta', skill: 'javascript', date: '09/01/2022', 'slot time': '11:00 AM to 12 PM' }
+  ];
+  */
+  /*constructor(private http: HttpClient)
+  {
+    this.rowData = this.http.get<any[]>('../../assets/data/slots.json');
+  }
+  */
+  constructor(private _recruiterService: RecruiterService){}
+
+  ngOnInit(){
+    this._recruiterService.getSlots()
+      .subscribe(data => this.rowData = data)
+  }
+
+  
+  public popupParent: HTMLElement = document.body;
+    
   public columnTypes: {
     [key: string]: ColDef;
   } = {
@@ -51,4 +76,13 @@ export class RecruiterComponent {
       },
     },
   };
+
+  onBtnExport() {
+    this.gridApi.exportDataAsCsv();
+  }
+
+  onGridReady(params: GridReadyEvent) {
+    this.gridApi = params.api;
+  }
+// set background colour on even rows again, this looks bad, should be using CSS classes
 }

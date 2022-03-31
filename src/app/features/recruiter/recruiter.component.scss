@@ -1,108 +1,71 @@
-* {
-    box-sizing: border-box;
-  }
- body {
-    font-family: Arial, Helvetica, sans-serif;
-  }
+header {
+  background-color: royalblue;
+  padding: 10px;
+  text-align: right;
+  font-size: 25px;
+  color: white;
+}
+.btn {
+  background-color: white;
+  border: none;
+  color: black;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-size: 20px;
+}
+.btn:hover {
+  color: white;
+  background-color: rgb(112, 4, 4);
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+form {
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+section::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.filters {
+  background-color: rgb(206, 214, 238);
+  padding: 10px;
+  text-align: right;
+  color: black;
+}
 
-  header {
-    background-color: #666;
-    padding: 10px;
-    text-align: right;
-    font-size: 25px;
-    color: white;
-  }
-  
-  /* Create two columns/boxes that floats next to each other */
-  nav {
-    float: left;
-    background: #ccc;
-    padding: 20px;
-  }
-  
-  /* Style the list inside the menu */
-  nav ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  section::after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-  
-  /* Style the footer */
-  footer {
-    background-color: #777;
-    padding: 10px;
-    text-align: right;
-    color: white;
-  }
-  
-  /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
-  @media (max-width: 600px) {
-    nav, ag-grid-angular {
-      width: 100%;
-      height: auto;
-    }
-  }
-  label {
-      display: block;
-      font: 1rem 'Fira Sans', sans-serif;
-  }
-  
-  input,
-  label {
-      margin: .4rem 0;
-  }
-  #myInput {
-    background-image: url('/css/searchicon.png');
-    background-position: 10px 12px;
-    background-repeat: no-repeat;
-    width: 100%;
-    font-size: 16px;
-    padding: 12px 20px 12px 40px;
-    border: 1px solid #ddd;
-    margin-bottom: 12px;
-  }
-  
-  #myUL {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  #myUL li a {
-    border: 1px solid #ddd;
-    margin-top: -1px; /* Prevent double borders */
-    background-color: #f6f6f6;
-    padding: 12px;
-    text-decoration: none;
-    font-size: 18px;
-    color: black;
-    display: block
-  }
-  
-  #myUL li a:hover:not(.header) {
-    background-color: #eee;
-  }
-  .btn {
-    background-color: white;
-    border: none;
-    color: black;
-    padding: 12px 30px;
-    cursor: pointer;
-    font-size: 20px;
-  }
-  
-  /* Darker background on mouse-over */
-  .btn:hover {
-    background-color: RoyalBlue;
-  }
+footer {
+  //background-color: royalblue;
+  padding: 10px;
+  text-align: right;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+nav {
+  float: left;
+  height: 550px;;
+  background: rgb(238, 170, 170);
+  padding: 20px;
+}
+.x {
+  color: black;
+  font-size: large;
+}
 
- /*ag-grid-angular{
-     //float: left;
-     //border-collapse: collapse;
-     //align-items: flex-start;
- }
- */
+.ag-theme-alpine {
+  --ag-odd-row-background-color: #7e90f1;
+  --ag-header-background-color:#7e90f1;
+  --ag-even-row-background-color: rgb(238, 116, 116);
+  --ag-background-color: rgb(236, 228, 236);
+  --ag-font-size: 100;
+  border: 1px solid royalblue;
+}
+
+

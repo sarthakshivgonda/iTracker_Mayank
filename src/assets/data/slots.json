@@ -1,0 +1,8 @@
+[
+    { "name": "Celica", "skill": "java", "date": "04/01/2022", "slot time": "11:00 AM to 12 PM"},
+    { "name": "naruto", "skill": "angular", "date": "05/01/2022", "slot time": "11:00 AM to 12 PM" },
+    { "name": "goku", "skill": "react", "date": "06/01/2022", "slot time": "11:00 AM to 12 PM" },
+    { "name": "luffy", "skill": "c++", "date": "07/01/2022", "slot time": "11:00 AM to 12 PM" },
+    { "name": "sasuke", "skill": ".Net", "date": "08/01/2022", "slot time": "11:00 AM to 12 PM" },
+    { "name": "vegeta", "skill": "javascript", "date": "09/01/2022", "slot time": "11:00 AM to 12 PM" }
+]
